@@ -11,12 +11,12 @@ function Home() {
   let navigate = useNavigate();
 
   useEffect(() => {
-    axios.get("http://localhost:3001/posts").then((response) => {
+    axios.get("https://full-stack-api-nathachai01.herokuapp.com/posts").then((response) => {
       // console.log(response.data);
       setListOfPosts(response.data);
     });
 
-    axios.get("http://localhost:3001/auth").then((response) => {
+    axios.get("https://full-stack-api-nathachai01.herokuapp.com/auth").then((response) => {
       // console.log(response.data);
       setListOfUsers(response.data);
     });
@@ -25,7 +25,7 @@ function Home() {
   const likeAPost = (postId) => {
     axios
       .post(
-        "http://localhost:3001/likes",
+        "https://full-stack-api-nathachai01.herokuapp.com/likes",
         { PostId: postId },
         { headers: { accessToken: localStorage.getItem("accessToken") } }
       )

@@ -13,21 +13,21 @@ function Post() {
   const { authState } = useContext(AuthContext);
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/posts/byId/${id}`).then((response) => {
+    axios.get(`https://full-stack-api-nathachai01.herokuapp.com/posts/byId/${id}`).then((response) => {
       setPostObject(response.data);
       let data = { UserId: response.data.UserId};
-      axios.post(`http://localhost:3001/auth/byIduser`,data).then((response) => {
+      axios.post(`https://full-stack-api-nathachai01.herokuapp.com/auth/byIduser`,data).then((response) => {
       setUsername(response.data.username);
       });
     });
 
-    axios.get(`http://localhost:3001/comments/${id}`).then((response) => {
+    axios.get(`https://full-stack-api-nathachai01.herokuapp.com/comments/${id}`).then((response) => {
       setComments(response.data);
     });
   }, []);
 
   const addComment = () => {
-    axios.post(`http://localhost:3001/comments`, {commentBody: newComent, PostId: id },{ headers:{ accessToken: localStorage.getItem('accessToken')} }).then((response) => {
+    axios.post(`https://full-stack-api-nathachai01.herokuapp.com/comments`, {commentBody: newComent, PostId: id },{ headers:{ accessToken: localStorage.getItem('accessToken')} }).then((response) => {
         if(response.data.error){
           alert("Please login.");
         }else{
@@ -39,7 +39,7 @@ function Post() {
   }
 
   const deleteComment = (id) =>{
-    axios.delete(`http://localhost:3001/comments/${id}`, {headers: { accessToken: localStorage.getItem('accessToken') }}).then((respones)=>{
+    axios.delete(`https://full-stack-api-nathachai01.herokuapp.com/comments/${id}`, {headers: { accessToken: localStorage.getItem('accessToken') }}).then((respones)=>{
       setComments(comments.filter((val)=>{
         return val.id !== id 
       }))
@@ -47,7 +47,7 @@ function Post() {
   }
 
   const deletePost = (id) => {
-    axios.delete(`http://localhost:3001/posts/${id}`, {headers: { accessToken: localStorage.getItem('accessToken') }}).then((respones)=>{
+    axios.delete(`https://full-stack-api-nathachai01.herokuapp.com/posts/${id}`, {headers: { accessToken: localStorage.getItem('accessToken') }}).then((respones)=>{
       navigate("/");
     })
   }

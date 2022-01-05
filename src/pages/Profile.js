@@ -9,10 +9,10 @@ function Profile() {
   let navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/auth/basicinfo/${id}`).then((respones) => {
+    axios.get(`https://full-stack-api-nathachai01.herokuapp.com/auth/basicinfo/${id}`).then((respones) => {
       setUsername(respones.data.username);
     });
-    axios.get(`http://localhost:3001/posts/byuserId/${id}`).then((respones) => {
+    axios.get(`https://full-stack-api-nathachai01.herokuapp.com/posts/byuserId/${id}`).then((respones) => {
       console.log("respones.data", respones.data);
       setListOfPosts(respones.data);
     });

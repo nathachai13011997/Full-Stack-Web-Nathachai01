@@ -34,7 +34,7 @@ function Registration() {
   });
   const onSubmit = (data) => {
     // console.log(data);
-    axios.post("http://localhost:3001/auth", data).then((response)=>{
+    axios.post("https://full-stack-api-nathachai01.herokuapp.com/auth", data).then((response)=>{
         // console.log(response.data);
         navigate("/");
         console.log("Success Registration");

@@ -20,7 +20,7 @@ function App() {
   
   useEffect(() => {
       if(localStorage.getItem('accessToken')){
-        axios.get("http://localhost:3001/auth/auth",{ headers: { accessToken:localStorage.getItem("accessToken") }}).then((respones)=>{
+        axios.get("https://full-stack-api-nathachai01.herokuapp.com/auth/auth",{ headers: { accessToken:localStorage.getItem("accessToken") }}).then((respones)=>{
           if(respones.data.error){
             setAuthState({...authState, status: false });
             localStorage.removeItem("accessToken");
